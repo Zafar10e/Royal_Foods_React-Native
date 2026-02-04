@@ -1,8 +1,11 @@
 import CustomButton from '@/components/customButton';
 import CustomInput from '@/components/customInput';
+import { signIn } from '@/lib/appwrite';
+import * as Sentry from '@sentry/react-native';
 import { Link, router } from 'expo-router';
 import React, { useState } from 'react';
 import { Alert, Text, View } from 'react-native';
+
 
 const SignIn = () => {
  const [isSubmitting, setIsSubmitting] = useState(false)
@@ -16,7 +19,7 @@ const SignIn = () => {
 
  const getPasswordErrors = (password: string): string[] => {
   const errors: string[] = []
-  if (password.length < 6) errors.push("at least 6 characters");
+  if (password.length < 8) errors.push("at least 8 characters");
   if (!/[A-Z]/.test(password)) errors.push("an uppercase letter");
   if (!/[a-z]/.test(password)) errors.push("a lowercase letter");
   if (!/\d/.test(password)) errors.push("a number");
@@ -26,14 +29,15 @@ const SignIn = () => {
 
 
  const submit = async () => {
+  const { email, password } = form
 
   let newErrors: { email?: string, password?: string } = {}
 
-  if (!validateEmail(form.email)) {
+  if (!validateEmail(email)) {
    newErrors.email = 'Please enter a valid email address'
   }
 
-  const pwdErrs = getPasswordErrors(form.password)
+  const pwdErrs = getPasswordErrors(password)
   if (pwdErrs.length > 0) {
    newErrors.password = `Password must have, ${pwdErrs.join(', ')}, to be valid.`
   }
@@ -46,12 +50,15 @@ const SignIn = () => {
 
   try {
    // call Appwrite Sign-in function
-
+   await signIn({ email, password })
    Alert.alert('Success', 'Sign-in Successful!')
+   setForm({ email: '', password: '' })
    router.replace('/')
 
   } catch (error: any) {
    Alert.alert('Error', error.message)
+   Sentry.captureEvent(error)
+
   } finally {
    setIsSubmitting(false)
   }

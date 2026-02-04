@@ -72,11 +72,11 @@ export interface CustomButtonProps {
  isLoading: boolean
 }
 
-interface CustomHeaderProps {
+export interface CustomHeaderProps {
  title: string
 }
 
-interface CustomInputProps {
+export interface CustomInputProps {
  placeholder?: string
  value?: string
  onChangeText?: (text: string) => void
@@ -85,7 +85,7 @@ interface CustomInputProps {
  keyboardType?: 'default' | 'email-address' | 'numeric' | 'phone-pad'
 }
 
-interface ProfileFieldProps {
+export interface ProfileFieldProps {
  label: string
  value: string
  icon: ImageSourcePropType
@@ -96,12 +96,12 @@ export interface CreateUserParams {
  password: string
  name: string
 }
-interface SignInParams {
+export interface SignInParams {
  email: string
  password: string
 }
 
-interface GetMenuProps {
+export interface GetMenuProps {
  category: string
  query: string
 }

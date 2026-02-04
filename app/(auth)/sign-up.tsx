@@ -1,5 +1,7 @@
 import CustomButton from '@/components/customButton';
 import CustomInput from '@/components/customInput';
+import { createUser } from '@/lib/appwrite';
+// import * as Sentry from '@sentry/react-native';
 import { Link, router } from 'expo-router';
 import React, { useState } from 'react';
 import { Alert, Text, View } from 'react-native';
@@ -17,7 +19,7 @@ const SignUp = () => {
 
  const getPasswordErrors = (password: string): string[] => {
   const errors: string[] = []
-  if (password.length < 6) errors.push('at least 6 characters')
+  if (password.length < 8) errors.push('at least 8 characters long')
   if (!/[A-Z]/.test(password)) errors.push('an uppercase letter')
   if (!/[a-z]/.test(password)) errors.push('a lowercase letter')
   if (!/\d/.test(password)) errors.push('a number')
@@ -27,18 +29,19 @@ const SignUp = () => {
 
 
  const submit = async () => {
+  const { name, email, password } = form
 
   let newErrors: { name?: string, email?: string, password?: string } = {}
 
-  if (form.name.length < 3) {
+  if (name.length < 3) {
    newErrors.name = 'Name must be at least 3 characters long'
   }
 
-  if (!validateEmail(form.email)) {
+  if (!validateEmail(email)) {
    newErrors.email = 'Please enter a valid email address'
   }
 
-  const pwdErrs = getPasswordErrors(form.password)
+  const pwdErrs = getPasswordErrors(password)
   if (pwdErrs.length > 0) {
    newErrors.password = `password must have, ${pwdErrs.join(', ')}, to be valid.`
   }
@@ -51,13 +54,16 @@ const SignUp = () => {
 
   try {
    // call Appwrite Sign-up function
+   await createUser({ email, password, name })
 
-   Alert.alert('Success', 'Sign-up Successful!')
+   setForm({ name: '', email: '', password: '' })
+
    router.replace('/')
 
-  } catch (error: unknown) {
+  } catch (error: any) {
+   // Sentry.captureEvent(error)
    const msg = error instanceof Error ? error.message : 'An unexpected error occurred!'
-   Alert.alert('Error', msg)
+   Alert.alert('Errord', msg)
   } finally {
    setIsSubmitting(false)
   }

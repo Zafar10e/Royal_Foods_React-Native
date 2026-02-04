@@ -54,11 +54,11 @@ const Index = () => {
       <CartButton />
      </View>
     }
-   // ListFooterComponent={
-   //  <View>
-   //   <Text>Footer Content</Text>
-   //  </View>
-   // }
+    ListFooterComponent={
+     <View>
+      <Text>Footer Content</Text>
+     </View>
+    }
    />
   </SafeAreaView >
  );

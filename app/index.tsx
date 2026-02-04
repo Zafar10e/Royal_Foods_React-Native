@@ -1,7 +1,7 @@
 import { Redirect } from 'expo-router';
 
 const Index = () => {
- const isAuthenticated = false
+ const isAuthenticated = true
 
  if (!isAuthenticated) {
   return (
