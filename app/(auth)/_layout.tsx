@@ -3,7 +3,8 @@ import { Slot } from 'expo-router';
 import React from 'react';
 import { Dimensions, Image, ImageBackground, KeyboardAvoidingView, Platform, ScrollView, View } from 'react-native';
 
-const Layout = () => {
+const AuthLayout = () => {
+
  return (
   <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'} style={{ flex: 1 }}>
    <ScrollView className='bg-white h-full' keyboardShouldPersistTaps='handled'>
@@ -16,4 +17,4 @@ const Layout = () => {
   </KeyboardAvoidingView>)
 }
 
-export default Layout;
+export default AuthLayout;
