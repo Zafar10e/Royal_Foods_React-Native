@@ -35,8 +35,6 @@ const useAuthStore = create<AuthStore>((set) => ({
   try {
    const user = await getCurrentUser()
 
-   console.log('Fetched user:', user)
-
    if (user) { set({ isAuthenticated: true, user: user as User }) }
    else { set({ isAuthenticated: false, user: null }) }
 

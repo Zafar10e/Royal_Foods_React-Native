@@ -8,7 +8,6 @@ const Index = () => {
  return (
   <SafeAreaView className="flex-1">
 
-
    <FlatList
     data={offers}
     contentContainerClassName="px-4 pb-30"
@@ -17,7 +16,7 @@ const Index = () => {
 
      return (
       <View>
-       <Pressable className={`offer-card  ${isEven ? 'flex-row-reverse pl-10' : 'flex-row'}`} style={{ backgroundColor: item.color }}
+       <Pressable className={`flex items-center overflow-hidden rounded-xl h-48 gap-5 my-3 shadow-lg ${isEven ? 'flex-row-reverse pl-10' : 'flex-row'}`} style={{ backgroundColor: item.color }}
         android_ripple={{ color: '#ffff22' }}
        >
         {({ pressed }) => (
