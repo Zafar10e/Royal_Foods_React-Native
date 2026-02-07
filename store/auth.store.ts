@@ -9,7 +9,7 @@ export interface User extends Models.Document {
  avatar: string
 }
 
-type AuthStore = {
+type AuthStoreType = {
  isAuthenticated: boolean,
  user: User | null,
  isLoading: boolean,
@@ -20,7 +20,7 @@ type AuthStore = {
 }
 
 
-const useAuthStore = create<AuthStore>((set) => ({
+const useAuthStore = create<AuthStoreType>((set) => ({
  isAuthenticated: false,
  user: null,
  isLoading: false,

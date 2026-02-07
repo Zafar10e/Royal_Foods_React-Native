@@ -1,10 +1,13 @@
 import CartButton from "@/components/cartButton";
 import { images, offers } from "@/constants";
+import useAuthStore from "@/store/auth.store";
 import { Fragment } from "react";
 import { FlatList, Image, Pressable, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const Index = () => {
+ const { user } = useAuthStore()
+
  return (
   <SafeAreaView className="flex-1">
 
