@@ -67,25 +67,25 @@ export const CATEGORIES = [
 export const offers = [
  {
   id: 1,
-  title: "SUMMER COMBO",
+  title: "ROYAL KING",
   image: burgerOne,
   color: "#D33B0D",
  },
  {
   id: 2,
-  title: "BURGER BASH",
+  title: "BURGER JUMBO",
   image: burgerTwo,
   color: "#DF5A0C",
  },
  {
   id: 3,
-  title: "PIZZA PARTY",
+  title: "PIZZA LARGE",
   image: pizzaOne,
   color: "#084137",
  },
  {
   id: 4,
-  title: "BURRITO DELIGHT",
+  title: "DELIGHT MIX",
   image: buritto,
   color: "#EB920C",
  },
