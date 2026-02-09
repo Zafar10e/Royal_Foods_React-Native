@@ -16,8 +16,9 @@ export interface TabBarIconProps {
 const TabBarIcon = ({ focused, color, size, name }: TabBarIconProps) => (
  <View
   style={{
-   minWidth: (size + 140) / 2, minHeight: (size + 55) / 2, alignItems: 'center', justifyContent: 'center', marginTop: 20, borderWidth: 1.5, borderRadius: (size + 30) / 2, borderColor: focused ? '#fb923c' : 'transparent'
+   minWidth: (size + 140) / 2, minHeight: (size + 60) / 2, alignItems: 'center', justifyContent: 'center', marginTop: 20, borderWidth: 1.5, borderRadius: (size + 30) / 2, borderColor: focused ? '#fb923c' : 'transparent'
   }}
+ // className={`flex min-w-24 min-h-12 items-center justify-center mt-6 ${focused ? 'border rounded-full border-orange-400' : ''}`}
  >
   <Ionicons
    name={name}

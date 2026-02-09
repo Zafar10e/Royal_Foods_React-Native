@@ -67,7 +67,7 @@ export const CATEGORIES = [
 export const offers = [
  {
   id: 1,
-  title: "ROYAL KING",
+  title: "ROYAL SPECIAL",
   image: burgerOne,
   color: "#D33B0D",
  },
@@ -75,19 +75,20 @@ export const offers = [
   id: 2,
   title: "BURGER JUMBO",
   image: burgerTwo,
-  color: "#DF5A0C",
+  color: "#EB920C",
  },
  {
   id: 3,
   title: "PIZZA LARGE",
   image: pizzaOne,
-  color: "#084137",
+  color: "#DF5A0C",
  },
  {
   id: 4,
   title: "DELIGHT MIX",
   image: buritto,
-  color: "#EB920C",
+  color: "#084137",
+
  },
 ];
 
